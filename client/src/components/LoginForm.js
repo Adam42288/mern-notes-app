@@ -1,92 +1,53 @@
 // see SignupForm.js for comments
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
+import ForgetPass from "./Forget"
 
-import { loginUser } from '../utils/API';
-import Auth from '../utils/auth';
+function Form() { //two state variables for firstName and lastName using `useState`
+const [firstName, setFirstName] = useState('');
+const [lastName, setLastName] = useState('');
 
-const LoginForm = () => {
-  const [userFormData, setUserFormData] = useState({ email: '', password: '' });
-  const [validated] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUserFormData({ ...userFormData, [name]: value });
-  };
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
-    // check if form has everything (as per react-bootstrap docs)
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    try {
-      const response = await loginUser(userFormData);
-
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
-
-      const { token, user } = await response.json();
-      console.log(user);
-      Auth.login(token);
-    } catch (err) {
-      console.error(err);
-      setShowAlert(true);
-    }
-
-    setUserFormData({
-      username: '',
-      email: '',
-      password: '',
-    });
-  };
-
-  return (
-    <>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-          Something went wrong with your login credentials!
-        </Alert>
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor='email'>Email</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder='Your email'
-            name='email'
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor='password'>Password</Form.Label>
-          <Form.Control
-            type='password'
-            placeholder='Your password'
-            name='password'
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-          <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
-        </Form.Group>
-        <Button
-          disabled={!(userFormData.email && userFormData.password)}
-          type='submit'
-          variant='success'>
-          Submit
-        </Button>
-      </Form>
-    </>
-  );
+const handleInputChange = (e) => { 
+  const { name, value } = e.target;
+  return name === 'firstName' ? setFirstName(value) : setLastName(value);
 };
 
-export default LoginForm;
+const handleFormSubmit = (e) => {
+  e.preventDefault();
+  // Alert the user their first and last name, clear the inputs
+  alert(`Hello ${firstName} ${lastName}`);
+  setFirstName('');
+  setLastName('');
+};
+
+return (
+  <div>
+      <p>
+        Hello {firstName} {lastName}
+      </p>
+      <form className="form">
+        <input
+          value={firstName}
+          name="firstName"
+          onChange={handleInputChange}
+          type="text"
+          placeholder="First Name"
+        />
+        <input
+          value={lastName}
+          name="lastName"
+          onChange={handleInputChange}
+          type="text"
+          placeholder="Last Name"
+        />
+        <button type="button" onClick={handleFormSubmit}>
+          Sign Up
+        </button>
+        <button type="clear" onClick={this.goToForgotPassword}>
+          Forgot Password?</button>
+      </form>
+    </div>
+  );
+}
+
+export default Form;
