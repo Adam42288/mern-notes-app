@@ -6,6 +6,8 @@ const routes = require('./routes');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+console.log(`process.env.MONGODB_URI: ${process.env.MONGODB_URI}`);
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
