@@ -1,6 +1,6 @@
 // see SignupForm.js for comments
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert } from './SignupForm';
 import ForgotPassword from "./ForgotPass";
 
 function Form() { //two state variables for firstName and lastName using `useState`
