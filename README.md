@@ -6,10 +6,52 @@ A journal that is always with you.
 
 {example of site page}
 
+Built with
+REACT
+Stripe
+MongoDB
 
+
+Once the project is fully running and outside of beta, we would like our site to be a digital journal that you can always have with you, udated from your phone, laptop or desktop. Full encryption and two factor authentication will be added to ensure full security and you can remove any pages. Plans to add a downloadable version that can be linked between devices to help you always keep your personal diary with you.
+
+
+
+
+CODE EXAMPLE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CODE EXAMPLE
+
+
+
+
+ Local installation is a work in progress.
 
 
 Made by: Adam Santillana, Chrissy Pike, Danica On, Molly Turner, and Matthew Wessman.
+
+https://github.com/Adam42288
+https://github.com/Chrissypike
+https://github.com/DaniaOn
+https://github.com/mollyturner
+https://github.com/JimblesMw
+
 
 #Features
 
