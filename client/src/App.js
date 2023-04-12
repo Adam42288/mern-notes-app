@@ -1,19 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import SearchBooks from './pages/SearchBooks';
-import SavedNotes from './pages/SavedNotes';
-import Navbar from './components';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 function App() {
   return (
     <Router>
       <>
-        <Navbar />
-        <Switch>
-          <Route exact path='/' component={SearchBooks} />
-          <Route exact path='/saved' component={SavedNotes} />
+        <Routes>
           <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
-        </Switch>
+        </Routes>
       </>
     </Router>
   );
