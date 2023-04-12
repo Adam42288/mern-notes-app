@@ -1,4 +1,4 @@
-# mern-notes-app
+# Secret Keeper
 
 A journal that is always with you. 
 
@@ -45,27 +45,28 @@ CODE EXAMPLE
  Local installation is a work in progress.
 
 
-Made by: Adam Santillana, Chrissy Pike, Danica On, Molly Turner, and Matthew Wessman.
+## Colaborators
 
-https://github.com/Adam42288
-https://github.com/Chrissypike
-https://github.com/DaniaOn
-https://github.com/mollyturner
-https://github.com/JimblesMw
+Made by:
 
+- Adam Santillana: https://github.com/Adam42288
+- Chrissy Pike: https://github.com/Chrissypike
+- Danica On: https://github.com/DaniaOn
+- Molly Turner: https://github.com/mollyturner
+- Matthew Wessman: https://github.com/JimblesMw
 
-#Features
+## Features
 
--Email and password login
--No page limit
--Offline access
+- Email and password login
+- No page limit
+- Offline access
 
-#Features to be added later
--Two Factor Identification
--Account recovery via Email
--Email sigin
--Account deletion
+## Features to be added later
 
+- Two Factor Identification
+- Account recovery via Email
+- Email sigin
+- Account deletion
 
 ## LICENSE 
 
