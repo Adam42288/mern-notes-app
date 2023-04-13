@@ -1,53 +1,33 @@
-// see SignupForm.js for comments
-import React, { useState } from 'react';
-import { Form, Button, Alert } from './SignupForm';
-import ForgotPassword from "./ForgotPass";
+import { useState } from 'react';
 
-function Form() { //two state variables for firstName and lastName using `useState`
-const [firstName, setFirstName] = useState('');
-const [lastName, setLastName] = useState('');
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-const handleInputChange = (e) => { 
-  const { name, value } = e.target;
-  return name === 'firstName' ? setFirstName(value) : setLastName(value);
-};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(email, password);
+  }
 
-const handleFormSubmit = (e) => {
-  e.preventDefault();
-  // Alert the user their first and last name, clear the inputs
-  alert(`Hello ${firstName} ${lastName}`);
-  setFirstName('');
-  setLastName('');
-};
-
-return (
-  <div>
-      <p>
-        Hello {firstName} {lastName}
-      </p>
-      <form className="form">
-        <input
-          value={firstName}
-          name="firstName"
-          onChange={handleInputChange}
-          type="text"
-          placeholder="First Name"
-        />
-        <input
-          value={lastName}
-          name="lastName"
-          onChange={handleInputChange}
-          type="text"
-          placeholder="Last Name"
-        />
-        <button type="button" onClick={handleFormSubmit}>
-          Sign Up
-        </button>
-        <button type="clear" onClick={this.goToForgotPassword}>
-          Forgot Password?</button>
-      </form>
-    </div>
-  );
-}
-
-export default Form;
+  return (
+    <form className='login' onSubmit={handleSubmit}>
+      <h3>Login</h3>
+  
+      <label>Email:</label>
+      <input 
+        type="email"
+        onChange={(e) => setEmail(e.target.value)}
+        value={email}
+      />
+      <label>Password:</label>
+      <input
+        type="password"
+        onChange={(e) => setPassword(e.target.value)}
+        value={password}
+      />
+      <button type="submit">Sign Up</button>
+    </form>
+  )
+  }
+  
+  export default Login;
