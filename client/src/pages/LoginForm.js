@@ -27,7 +27,6 @@ const Login = () => {
         value={password}
       />
       <button type="submit">Sign Up</button>
-      <button onClick={this.ForgotPassword.bind(this)}>Forgot</button>
     </form>
   )
   }
