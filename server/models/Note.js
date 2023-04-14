@@ -1,31 +1,19 @@
-const { Schema } = require("mongoose");
+const mongoose = require("mongoose");
 
-// This is a subdocument schema, it won't become its own model but we'll use it as the schema for the User's `savedNotes` array in User.js
+const { Schema } = mongoose;
+
 const noteSchema = new Schema({
-  authors: [
-    {
-      type: String,
-    },
-  ],
-  description: {
+  entryDate: {
+    type: Date,
+    default: Date.now,
+  },
+  noteText: {
     type: String,
     required: true,
-  },
-  // saved note id from GoogleBooks
-  bookId: {
-    type: String,
-    required: true,
-  },
-  image: {
-    type: String,
-  },
-  link: {
-    type: String,
-  },
-  title: {
-    type: String,
-    required: true,
+    trim: true,
   },
 });
 
-module.exports = bookSchema;
+const Note = mongoose.model("Note", noteSchema);
+
+module.exports = Note;

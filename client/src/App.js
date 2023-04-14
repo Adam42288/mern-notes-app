@@ -1,22 +1,35 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import SearchBooks from './pages/SearchBooks';
-import SavedBooks from './pages/SavedBooks';
-// import Navbar from './components';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import Home from './pages/Home';
+import Login from './pages/LoginForm';
+import Signup from './pages/SignupForm';
+import Navbar from './components/Navbar';
+
+//TODO: Still need to add forgot password and the Note.js when code is written
 function App() {
   return (
-    <Router>
-      <>
-        {/* <Navbar /> */}
-        <Switch>
-          <Route exact path='/' component={SearchBooks} />
-          <Route exact path='/saved' component={SavedBooks} />
-          <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
-        </Switch>
-      </>
-    </Router>
-  );
+    <div className="App">
+      <BrowserRouter>
+        <Navbar />
+        <div className="pages">
+          <Routes>
+            <Route 
+            path='/' 
+            element={<Home />} 
+            />
+             <Route 
+            path='/loginForm' 
+            element={<Login />} 
+            />
+             <Route 
+            path='/SignupForm'
+            element={<Signup />} 
+            />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </div>
+  )
 }
-
-export default App;
+ export default App;
