@@ -8,7 +8,7 @@ const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 
-console.log(`process.env.MONGODB_URI: ${process.env.MONGODB_URI}`); 
+//console.log(`process.env.MONGODB_URI: ${process.env.MONGODB_URI}`); 
 
 const app = express();
 const server = new ApolloServer({
@@ -36,7 +36,7 @@ const startApolloServer = async (typeDefs, resolvers) => {
   
   db.once('open', () => {
     app.listen(PORT, () => {
-      console.log(`API server running on port ${PORT}!`);
+      console.log(`🌍 Now listening on localhost:${PORT}`);
       console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
     })
   })
