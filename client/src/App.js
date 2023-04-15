@@ -7,8 +7,12 @@ import Login from './pages/LoginForm';
 import Signup from './pages/SignupForm';
 import Navbar from './components/Navbar';
 
-//TODO: Still need to add forgot password and the Note.js when code is written
+
 function App() {
+
+
+//TODO: Still need to add forgot password and the Note.js when code is written
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -17,11 +21,11 @@ function App() {
           <Routes>
             <Route 
             path='/' 
-            element={<Home />} 
+            element={<Home />}
             />
              <Route 
             path='/loginForm' 
-            element={<Login />} 
+            element={<Login />}
             />
              <Route 
             path='/SignupForm'
