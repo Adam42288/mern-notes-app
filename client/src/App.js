@@ -1,37 +1,39 @@
+
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useState } from "react";
 import './App.css';
+import { Login } from "./pages/LoginForm";
+import { Signup } from "./pages/SignupForm";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 import Home from './pages/Home';
-import Login from './pages/LoginForm';
-import Signup from './pages/SignupForm';
 import Navbar from './components/Navbar';
 import Note from './pages/Note';
 
 
 function App() {
+  const [currentForm, setCurrentForm] = useState('login');
 
-
-//TODO: Still need to add forgot password and the Note.js when code is written
+  const toggleForm = (formName) => {
+    setCurrentForm(formName);
+  }
 
   return (
     <div className="App">
+
       <BrowserRouter>
         <Navbar />
         <div className="pages">
           <Routes>
             <Route 
+              {
+                currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Signup onFormSwitch={toggleForm} />
+              }
+            />
+            <Route 
             path='/' 
             element={<Home />}
-            />
-             <Route 
-            path='/loginForm' 
-            element={<Login />}
-            />
-             <Route 
-            path='/SignupForm'
-            element={<Signup />} 
             />
              <Route 
             path='/Note'
@@ -40,7 +42,9 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
+      
     </div>
-  )
+  );
 }
- export default App;
+
+export default App;

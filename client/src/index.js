@@ -1,17 +1,16 @@
 
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import './index.css';
-import  App from './App';
-import { AuthProvider } from './utils/auth'
-import { NotesContextProvider } from './utils/noteAuth'
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
-    <AuthProvider>
-      <NotesContextProvider>
-        <App />
-      </NotesContextProvider>
-    </AuthProvider>
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
+
+reportWebVitals();
