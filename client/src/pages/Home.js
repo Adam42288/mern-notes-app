@@ -1,6 +1,8 @@
 import React from "react";
 import Signup from "./SignupForm";
 import Login from "./LoginForm";
+import Note from "./Note";
+
 
 
 const Home = () => {
@@ -8,6 +10,7 @@ const Home = () => {
     <div className="container">
       <Signup />
       <Login />
+      <Note />
     </div>
   );
 };
