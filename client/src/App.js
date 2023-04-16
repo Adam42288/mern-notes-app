@@ -1,11 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css'
+import './App.css';
+
 
 import Home from './pages/Home';
 import Login from './pages/LoginForm';
 import Signup from './pages/SignupForm';
 import Navbar from './components/Navbar';
+import Note from './pages/Note';
 
 
 function App() {
@@ -30,6 +32,10 @@ function App() {
              <Route 
             path='/SignupForm'
             element={<Signup />} 
+            />
+             <Route 
+            path='/Note'
+            element={<Note />} 
             />
           </Routes>
         </div>
