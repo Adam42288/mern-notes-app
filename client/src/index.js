@@ -5,6 +5,7 @@ import  App from './App';
 import { AuthProvider } from './utils/auth'
 import { NotesContextProvider } from './utils/noteAuth'
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
