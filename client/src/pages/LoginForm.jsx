@@ -1,13 +1,28 @@
 import React, { useState } from "react";
+import { useMutation } from "@apollo/client"
+import { LOGIN_USER } from "../utils/mutations.js"
 
 //Login function
-export const Login = (props) => {
+const Login = (props) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
 
-    const handleSubmit = (e) => {
+    const [loginUser, { error }] = useMutation(LOGIN_USER)
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(email);
+        const { data } = await loginUser({
+            variables: {
+                email: email,
+                password: pass
+            }
+        })    
+
+        if (!data) { 
+            return alert("Login credentials incorrect")
+        }
+        
+        window.location.assign("/Note")
     }
 //criteria for login
     return (
@@ -20,7 +35,7 @@ export const Login = (props) => {
                 <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
                 <button type="submit">Log In</button>
             </form>
-            <button className="link-btn" onClick={() => props.onFormBrowserRouter('register')}>Don't have an account? Register here.</button>
+            <a className="link-btn" href="/SignupForm" >Don't have an account? Register here.</a> 
         </div>
     )
 }
