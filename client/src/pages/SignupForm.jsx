@@ -1,14 +1,23 @@
 import React, { useState } from "react";
+import { useMutation } from "@apollo/client"
+import { ADD_USER } from "../utils/mutations.js"
 
 //criteria for register
-export const Signup = (props) => {
+const Signup = (props) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [name, setName] = useState('');
 
+    const [addUser, { error }] = useMutation(ADD_USER)
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email);
+        addUser({
+            variables: {
+                email: email,
+                password: pass
+            }
+        })
     }
 
     return (
@@ -23,7 +32,7 @@ export const Signup = (props) => {
             <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
             <button type="submit">Log In</button>
         </form>
-        <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
+        <a className="link-btn" href="/">Already have an account? Login here.</a>
     </div>
     )
 }
