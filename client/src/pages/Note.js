@@ -10,7 +10,6 @@ const Note = () => {
     e.preventDefault();
   
   }
-  
 
   return (
     <form className='login' onSubmit={handleSubmit}>

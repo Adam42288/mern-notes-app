@@ -27,3 +27,5 @@ export const Signup = (props) => {
     </div>
     )
 }
+
+export default Signup;
