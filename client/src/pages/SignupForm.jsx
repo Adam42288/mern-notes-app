@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client"
 import { ADD_USER } from "../utils/mutations.js"
-import { redirect } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 //criteria for register
 const Signup = (props) => {
