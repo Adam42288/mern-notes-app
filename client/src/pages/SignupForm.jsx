@@ -25,8 +25,8 @@ const Signup = (props) => {
         if (!data) {
             return alert("Sorry...Can't come in")
         }
-
-        navigate('/')
+        alert("Hey buddy")
+        navigate('/Note')
     }
 
     return (

@@ -2,15 +2,15 @@ import { Box, Fab, Fade, Paper, TextField, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import EditIcon from '@mui/icons-material/Edit';
 import HTMLFlipBook from 'react-pageflip';
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   page: {
-    padding: '20px',
+    padding: '0px',
     backgroundColor: '#fdfaf7',
     color: '#785e3a',
     border: '1px solid #c2b5a3',
-    overflow: 'hidden',
+    // overflow: 'hidden',
     fontSize: '80%',
   },
   pageBorderRight: {
@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
 
   },
   inputTextBox: {
-    margin: '1em 0',
     width: '30em',
     backgroundColor: '#fdfaf7',
   },
@@ -58,9 +57,9 @@ const savedNotes = [
         backgroundImage: 'url(/assets/journal_background.png)',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        width: '100%',
-        height: '100%',
+        backgroundSize: '100vw 100vh',
+        width: '100vw',
+        height: '100vh',
         // overflow: 'hidden',
         display: 'flex',
         justifyContent: 'center',
@@ -70,17 +69,17 @@ const savedNotes = [
     >
       <HTMLFlipBook
         width={300}
-        height={500}
+        height={600}
         showPageCorners={true}
         ref={flipBook}
       >
         {savedNotes?.map((note, index) => (
           <div className={`${classes.page} ${classes.pageBorderRight}`}>
-            <Typography variant="h4" sx={{ textAlign: 'center', marginBottom: '1rem' }}>
+            <Typography variant="h4" sx={{ padding: " 10px 20px", textAlign: 'center', marginBottom: '1rem' }}>
               Page {index + 1}
             </Typography>
 
-            <Typography variant="body1" sx={{ textAlign: 'center', fontSize: '.75rem' }}>
+            <Typography variant="body1" sx={{ padding: " 10px 20px", textAlign: 'center', fontSize: '.75rem' }}>
               {note}
             </Typography>
           </div>
@@ -92,8 +91,8 @@ const savedNotes = [
           in={showTextBox}
         >
           <TextField
+          sx={{ margin: '1em 0' }}
             className={classes.inputTextBox}
-            size={'medium'}
             id="filled-basic"
             label="Filled"
             variant="filled"

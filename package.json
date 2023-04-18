@@ -14,11 +14,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^5.1.0",
+    "concurrently": "^5.3.0",
     "react-router-dom": "^6.10.0"
   },
   "dependencies": {
-    "@mui/material": "^5.12.1",
-    "react-pageflip": "^2.0.3"
+    "graphql": "^16.6.0",
+    "ra-data-graphql": "^4.8.4"
   }
 }
