@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client"
 import { ADD_USER } from "../utils/mutations.js"
 import { Link, useNavigate } from 'react-router-dom';
+import Auth from "../utils/auth.js"
 
 //criteria for register
 const Signup = (props) => {
@@ -25,7 +26,9 @@ const Signup = (props) => {
         if (!data) {
             return alert("Sorry...Can't come in")
         }
-        alert("Hey buddy")
+
+        Auth.login(data?.addUser.token)
+
         navigate('/Note')
     }
 
