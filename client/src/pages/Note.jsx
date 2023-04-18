@@ -64,7 +64,6 @@ const savedNotes = [
     setShowTextBox(!showTextBox);
   };
 
-  console.log(showTextBox)
   const changeHandler = (event) => {
     setNewNote(event.target.value)
   }
@@ -95,10 +94,11 @@ const savedNotes = [
         alignItems: 'center',
         flexDirection: 'column',
       }}
-    >
+      >
+      {data?.me.notes.length ? 
       <HTMLFlipBook
-        width={500}
-        height={800}
+        width={400}
+        height={600}
         showPageCorners={true}
         ref={flipBook}
         style={{marginTop: "15vh"}}
@@ -115,6 +115,7 @@ const savedNotes = [
           </div>
         ))}
       </HTMLFlipBook>
+        : <h2 style={{textAlign: "center"}}>Please make an entry to see them here</h2> }
       <Box className={classes.controlBox}>
         {/*Text box*/}
         <Box
