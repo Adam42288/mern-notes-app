@@ -1,31 +1,49 @@
-import { createContext, useReducer } from 'react'
+import decode from 'jwt-decode';
 
-export const AuthContext = createContext()
+class AuthService {
+  getProfile() {
+    return decode(this.getToken());
+  }
 
-export const authReducer = (state, action) => {
-  switch (action.type) {
-    case 'LOGIN':
-      return { user: action.payload }
-    case 'LOGOUT':
-      return { user: null }
-    default:
-      return state
+  loggedIn() {
+    // Checks if there is a saved token and it's still valid
+    const token = this.getToken();
+    const expired = this.isTokenExpired(token)
+
+    if (!token || expired) {
+      return false
+    }
+
+    return true
+  }
+
+  isTokenExpired(token) {
+    try {
+      const decoded = decode(token);
+      if (decoded.exp < Date.now() / 1000) {
+        return true;
+      } else return false;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  getToken() {
+    // Retrieves the user token from localStorage
+    return localStorage.getItem('id_token');
+  }
+
+  login(idToken) {
+    // Saves user token to localStorage
+    localStorage.setItem('id_token', idToken);
+  }
+
+  logout() {
+    // Clear user token and profile data from localStorage
+    localStorage.removeItem('id_token');
   }
 }
 
-export const AuthProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(authReducer, { 
-    user: null
-  })
+const Auth = new AuthService();
 
-  console.log('AuthContext state:', state)
-  
-  return (
-    <AuthContext.Provider value={{ ...state, dispatch }}>
-      { children }
-    </AuthContext.Provider>
-  )
-
-}
-
-
+export default Auth;
