@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client"
 import { LOGIN_USER } from "../utils/mutations.js"
 import { Link, useNavigate } from 'react-router-dom';
+import Auth from "../utils/auth.js";
 
 
 //Login function
@@ -24,6 +25,8 @@ const Login = (props) => {
         if (!data) { 
             return alert("Login credentials incorrect")
         }
+
+        Auth.login(data?.login.token)
         
         navigate('/Note')
     }
