@@ -8,7 +8,6 @@ const Home = () => {
   return (
     <div className="container">
       <Login />
-      <Note />
     </div>
   );
 };

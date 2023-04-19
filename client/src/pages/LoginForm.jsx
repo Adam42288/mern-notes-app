@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client"
 import { LOGIN_USER } from "../utils/mutations.js"
+import { Link, useNavigate } from 'react-router-dom';
+import Auth from "../utils/auth.js";
+
 
 //Login function
 const Login = (props) => {
@@ -8,6 +11,7 @@ const Login = (props) => {
     const [pass, setPass] = useState('');
 
     const [loginUser, { error }] = useMutation(LOGIN_USER)
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,8 +25,10 @@ const Login = (props) => {
         if (!data) { 
             return alert("Login credentials incorrect")
         }
+
+        Auth.login(data?.login.token)
         
-        window.location.assign("/Note")
+        navigate('/Note')
     }
 //criteria for login
     return (
@@ -35,7 +41,7 @@ const Login = (props) => {
                 <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
                 <button type="submit">Log In</button>
             </form>
-            <a className="link-btn" href="/SignupForm" >Don't have an account? Register here.</a> 
+            <Link className="link-btn" to="/SignupForm">Don't have an account? Register here.</Link> 
         </div>
     )
 }

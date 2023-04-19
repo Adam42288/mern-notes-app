@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client"
 import { ADD_USER } from "../utils/mutations.js"
+import { Link, useNavigate } from 'react-router-dom';
+import Auth from "../utils/auth.js"
 
 //criteria for register
 const Signup = (props) => {
@@ -9,15 +11,25 @@ const Signup = (props) => {
     const [name, setName] = useState('');
 
     const [addUser, { error }] = useMutation(ADD_USER)
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        addUser({
+        const { data } = await addUser({
             variables: {
                 email: email,
                 password: pass
             }
         })
+
+        if (!data) {
+            return alert("Sorry...Can't come in")
+        }
+
+        Auth.login(data?.addUser.token)
+
+        navigate('/Note')
     }
 
     return (
@@ -32,7 +44,7 @@ const Signup = (props) => {
             <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
             <button type="submit">Log In</button>
         </form>
-        <a className="link-btn" href="/">Already have an account? Login here.</a>
+        <Link className="link-btn" to="/">Already have an account? Login here.</Link>
     </div>
     )
 }
